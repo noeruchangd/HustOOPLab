@@ -1,6 +1,8 @@
 package aims;
 
 public class DigitalVideoDisc {
+	private static int nbDigitalVideoDiscs = 0;
+	private int id;
 	private String title;
 	private String category;
 	private String director;
@@ -18,15 +20,18 @@ public class DigitalVideoDisc {
 	public int getLength() {
 		return length;
 	}
+	public int getId() {
+		return id;
+	}
 	public float getCost() {
 		return cost;
 	}
-	
-    public void setTitle(String title) {
-		this.title = title;
+	public void setTitle(String title) {
+	this.title = title;
 	}
-    
-	public DigitalVideoDisc(String title, String category, String director, int length, float cost) {
+    public DigitalVideoDisc(String title, String category, String director, int length, float cost) {
+    	nbDigitalVideoDiscs++;
+    	this.id = nbDigitalVideoDiscs;
         this.title = title;
         this.category = category;
         this.director = director;
@@ -35,6 +40,8 @@ public class DigitalVideoDisc {
     } // all params
     
     public DigitalVideoDisc(String title) {
+    	nbDigitalVideoDiscs++;
+    	this.id = nbDigitalVideoDiscs;
         this.title = title;
         this.category = ""; 
         this.director = ""; 
@@ -43,6 +50,8 @@ public class DigitalVideoDisc {
     } // only title
 
     public DigitalVideoDisc(String category, String title, float cost) {
+    	nbDigitalVideoDiscs++;
+    	this.id = nbDigitalVideoDiscs;
         this.title = title;
         this.category = category;
         this.director = ""; 
@@ -51,6 +60,8 @@ public class DigitalVideoDisc {
     } // only cat, title and cost
 
     public DigitalVideoDisc(String director, String category, String title, float cost) {
+    	nbDigitalVideoDiscs++;
+    	this.id = nbDigitalVideoDiscs;
         this.title = title;
         this.category = category;
         this.director = director;
