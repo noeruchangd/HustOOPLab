@@ -10,6 +10,16 @@ public class Cart {
         qtyOrdered = 0;
     }
 	
+    public void addDigitalVideoDisc(DigitalVideoDisc [] dvdList) {
+    	if (qtyOrdered + size(dvdList) < MAX_NUMBERS_ORDERED) {
+    		for (int i = 0, i < size(dvdList), i++) {
+    			itemsOrdered[qtyOrdered] = dvdList[i];
+    			qtyOrdered++;
+    		}
+    	}
+    	else System.out.println("Not enough space in cart!")
+    }
+    
 	public void addDigitalVideoDisc(DigitalVideoDisc disc) {
 		if (qtyOrdered < MAX_NUMBERS_ORDERED) {
 			itemsOrdered[qtyOrdered] = disc;
