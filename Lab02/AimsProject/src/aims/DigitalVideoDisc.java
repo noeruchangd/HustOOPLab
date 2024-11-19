@@ -27,6 +27,9 @@ public class DigitalVideoDisc {
 	public float getCost() {
 		return cost;
 	}
+	public void setTitle(String title) {
+	this.title = title;
+	}
 	
 
 	public String toString() {
@@ -37,7 +40,6 @@ public class DigitalVideoDisc {
 	public boolean isMatch(String title) {
 		return (title == this.title);
 	}
-	
     public DigitalVideoDisc(String title, String category, String director, int length, float cost) {
     	nbDigitalVideoDiscs++;
     	this.id = nbDigitalVideoDiscs;
