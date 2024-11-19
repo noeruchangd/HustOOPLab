@@ -12,7 +12,6 @@ public class Aims {
 		DigitalVideoDisc dvd3 = new DigitalVideoDisc("Aladdin", "Animation", 18.99f); 
 		anOrder.addDigitalVideoDisc(dvd3);
 
-		anOrder.
 
 		System.out.println("Total cost is : ");
 		System.out.println(anOrder.totalCost());
