@@ -1,4 +1,5 @@
 package aims;
+import java.util.*;
 
 public class Cart {
 	private int qtyOrdered;
@@ -62,4 +63,45 @@ public class Cart {
 		}
 		return sum;
 	}
+	public void print() {
+		System.out.println("***********************CART***********************");
+		System.out.println("Ordered items:");
+		for (int i = 0; i < qtyOrdered; i++) {
+			System.out.println((i + 1) + ". " + itemsOrdered[i].toString());
+		}
+		System.out.println("Total cost: " + totalCost());
+		System.out.println("**************************************************");
+	}
+	
+	public void searchId(int id) {
+		List<DigitalVideoDisc> results = new ArrayList<DigitalVideoDisc>();
+		for (int i = 0; i < qtyOrdered; i++) {
+			if (itemsOrdered[i].getId() == id) {
+				results.add(itemsOrdered[i]);
+			}
+		}
+		if (results.size() != 0) {
+		System.out.println("Search results for discs with ID " + id + ":");
+		for (int i = 0; i < results.size(); i++) {
+			System.out.println(results.get(i).toString());
+		}
+		}
+		else System.out.println("No results for discs matching ID " + id + ".");
+	
+	}
+	public void searchTitle(String title) {
+		List<DigitalVideoDisc> results = new ArrayList<DigitalVideoDisc>();
+		for (int i = 0; i < qtyOrdered; i++) {
+			if (itemsOrdered[i].isMatch(title)) {
+				results.add(itemsOrdered[i]);
+			}
+		}
+		if (results.size() != 0) {
+		System.out.println("Search results for discs with title " + title + ":");
+		for (int i = 0; i < results.size(); i++) {
+			System.out.println(results.get(i).toString());
+		}
+		}
+		else System.out.println("No results for discs matching title " + title + ".");
+}
 }
