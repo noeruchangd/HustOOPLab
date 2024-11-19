@@ -12,7 +12,16 @@ public class Aims {
 		DigitalVideoDisc dvd3 = new DigitalVideoDisc("Aladdin", "Animation", 18.99f); 
 		anOrder.addDigitalVideoDisc(dvd3);
 
-
+		DigitalVideoDisc dvdList[] = new DigitalVideoDisc[3];
+		dvdList[0] = dvd1;
+		dvdList[1] = dvd2;
+		dvdList[2] = dvd3;
+		
+		anOrder.addDigitalVideoDisc(dvdList);
+		anOrder.addDigitalVideoDisc(dvd1, dvd2);
+		
+		
+		
 		System.out.println("Total cost is : ");
 		System.out.println(anOrder.totalCost());
 	}
