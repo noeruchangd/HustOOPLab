@@ -10,6 +10,13 @@ public class Track implements Playable {
 		System.out.println("Track length: " + this.getLength());
 	}
 	
+	public boolean equals(Track o) {
+		if (this.getLength() == o.getLength() && this.getTitle() == o.getTitle()) {
+			return true;
+		}
+		else return false;
+	}
+	
 
 	public String getTitle() {
 		return title;
