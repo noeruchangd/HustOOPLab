@@ -6,6 +6,12 @@ public abstract class Media {
 	protected String category;
 	protected float cost;
 	
+	public boolean equals(Media o) {
+		if (this.getTitle() == o.getTitle()) {
+			return true;
+		}
+		else return false;
+	}
 	
 	public int getId() {
 		return id;
