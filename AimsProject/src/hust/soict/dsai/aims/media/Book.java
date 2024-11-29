@@ -14,6 +14,10 @@ public class Book extends Media {
 		}
 		else System.out.println("Author already exists in list!");
 	}
+	public String toString() {
+		String response = ("Book - " + this.getTitle() + " - " + this.getAuthors());
+		return response;
+	}
 	
 	public void removeAuthor(String authorName) {
 		if (authors.contains(authorName)) {
@@ -27,8 +31,13 @@ public class Book extends Media {
 		return authors;
 	}
 
-	public Book() {
-		// TODO Auto-generated constructor stub
-	}
-
+    public Book(String title) {
+        super(title);
+    }
+    public Book(String title, String category) {
+        super(title, category);
+    }
+    public Book(String title, String category, float cost) {
+        super(title, category, cost);
+    }
 }
