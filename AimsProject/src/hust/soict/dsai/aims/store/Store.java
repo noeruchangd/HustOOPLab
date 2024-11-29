@@ -26,5 +26,23 @@ public class Store {
 		}
 		else System.out.println("Not in stock!");
 	}
-
+    public void printStore() {
+        if (itemsInStore.size() == 0) {
+            System.out.println("The store is empty!");
+        } else {
+            System.out.println("********************STORE INVENTORY********************");
+            for (Media media : itemsInStore) {
+                System.out.println(media);
+            }
+            System.out.println("********************************************************");
+        }
+    }
+    public Media searchStore(String title) {
+		for (Media media : itemsInStore) {
+			if (media.getTitle().equals(title)) {
+				return media;
+			}
+		}
+		return null;
+	}
 }

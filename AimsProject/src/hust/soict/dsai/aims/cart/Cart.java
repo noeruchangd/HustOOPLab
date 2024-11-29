@@ -63,6 +63,15 @@ public class Cart {
 		else System.out.println("No results for discs matching ID " + id + ".");
 	
 	}
+    public Media searchTitleReturn(String title) {
+		for (Media media : itemsOrdered) {
+			if (media.getTitle().equals(title)) {
+				return media;
+			}
+		}
+		return null;
+	}
+
 	public void searchTitle(String title) {
 		List<Media> results = new ArrayList<Media>();
 		for (int i = 0; i < itemsOrdered.size(); i++) {
@@ -78,4 +87,32 @@ public class Cart {
 		}
 		else System.out.println("No results for discs matching title " + title + ".");
 }
+    public void sortMediaByTitle() {
+        Collections.sort((List<Media>)itemsOrdered, Media.COMPARE_BY_TITLE_COST);
+        Iterator<Media> iterator = itemsOrdered.iterator();
+        iterator = itemsOrdered.iterator();
+    
+        while (iterator.hasNext()) {
+            System.out.println(((Media)iterator.next()).toString());
+        }
+    }
+    public void sortMediaByCost() {
+        Collections.sort((List<Media>)itemsOrdered, Media.COMPARE_BY_COST_TITLE);
+        Iterator<Media> iterator = itemsOrdered.iterator();
+        iterator = itemsOrdered.iterator();
+    
+        while (iterator.hasNext()) {
+            System.out.println(((Media)iterator.next()).toString());
+        }
+    }
+    public void empty() {
+        if (itemsOrdered.size() == 0) {
+            System.out.println("Cart already empty!");
+        } else {
+            itemsOrdered.clear();
+            System.out.println("Cart emptied!");
+            System.out.println();
+        }
+    }
+
 }
