@@ -1,0 +1,8 @@
+For lab4:
+
+- Book, CompactDisc, DigitalVideoDisc and Disc are agreegates of Media.
+- The toString() method calls each of the individual toString methods of each class.
+- The Media class should implement the interface.
+- return -1 for m2 before, 1 for m1 before, 0 if order doesn't matter (i.e. both are equal)
+- Yes, it should be possible
+- Change if branches to arrive at required returns with new ordering rule 
