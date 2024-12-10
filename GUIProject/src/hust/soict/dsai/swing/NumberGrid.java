@@ -44,7 +44,7 @@ public class NumberGrid extends JFrame {
 		btnNumbers[0].addActionListener(btnListener);
 		
 		btnReset = new JButton("C");
-		panelButtons.add(btnReset);s
+		panelButtons.add(btnReset);
 		btnReset.addActionListener(btnListener);
 	}
 	
