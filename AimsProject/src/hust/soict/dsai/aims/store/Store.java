@@ -10,6 +10,10 @@ public class Store {
 	public Store() {
 	}
 	
+	public ArrayList<Media> getItemsInStore() {
+		return itemsInStore;
+	}
+	
 	public void addMedia(Media media) {
 		if (!itemsInStore.contains(media) && itemsInStore.size() < MAX_STOCK) {
 			itemsInStore.add(media);
