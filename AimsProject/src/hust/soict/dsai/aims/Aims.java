@@ -4,6 +4,7 @@ import java.util.*;
 import hust.soict.dsai.aims.store.Store;
 import hust.soict.dsai.aims.cart.Cart;
 import hust.soict.dsai.aims.media.*;
+import hust.soict.dsai.aims.screen.*;
 import hust.soict.dsai.test.cart.CartTest;
 import hust.soict.dsai.test.disc.StoreTest;
 import hust.soict.dsai.test.store.TestPassingParameter;
@@ -45,7 +46,6 @@ public class Aims {
                 System.out.println("Invalid option");
                 break;
         }      
-
 		}
 		}
 	
