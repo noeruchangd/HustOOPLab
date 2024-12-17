@@ -26,7 +26,9 @@ public abstract class Media {
     public void play() {
         System.out.println("Playing " + this.getTitle());
     }
-
+    public String playGUI() {
+        return "Playing " + this.getTitle();
+    }
 
 	public String getTitle() {
 		return title;

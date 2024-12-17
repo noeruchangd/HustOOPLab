@@ -11,13 +11,13 @@ public class Cart {
 	public Cart() {
     }
     
-	public void addMedia(Media media) {
+	public String addMedia(Media media) {
 		if (!itemsOrdered.contains(media) && itemsOrdered.size() < MAX_NUMBERS_ORDERED) {
 			itemsOrdered.add(media);
-			System.out.println("Added " + media.getTitle());
+			return ("Added " + media.getTitle());
 		}
-		else if (!(itemsOrdered.size() < MAX_NUMBERS_ORDERED)) System.out.println("Cart is full!");
-		else System.out.println("Already in cart!");
+		else if (!(itemsOrdered.size() < MAX_NUMBERS_ORDERED)) return ("Cart is full!");
+		else return ("Already in cart!");
 	}
 	
 	public void removeMedia (Media media) {
