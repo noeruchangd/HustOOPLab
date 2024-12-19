@@ -18,6 +18,7 @@ public class Aims {
 //		StoreTest.main(args);
 //		TestPassingParameter.main(args);
 		testInit();
+		new StoreScreen(store, cart);
 		boolean exit = false;
 		while (!exit) {
 			showMenu();
