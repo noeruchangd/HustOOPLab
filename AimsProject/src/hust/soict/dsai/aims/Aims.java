@@ -4,10 +4,12 @@ import java.util.*;
 import hust.soict.dsai.aims.store.Store;
 import hust.soict.dsai.aims.cart.Cart;
 import hust.soict.dsai.aims.media.*;
-import hust.soict.dsai.aims.screen.*;
+import hust.soict.dsai.aims.screen.CartScreen;
+import hust.soict.dsai.aims.screen.StoreScreen;
 import hust.soict.dsai.test.cart.CartTest;
 import hust.soict.dsai.test.disc.StoreTest;
 import hust.soict.dsai.test.store.TestPassingParameter;
+
 
 public class Aims {
     private static Store store = new Store();
@@ -18,7 +20,7 @@ public class Aims {
 //		StoreTest.main(args);
 //		TestPassingParameter.main(args);
 		testInit();
-		new StoreScreen(store, cart);
+		new StoreScreen(store);
 		boolean exit = false;
 		while (!exit) {
 			showMenu();
@@ -39,7 +41,7 @@ public class Aims {
                 updateStoreMenu(scanner);
                 break;
             case 3:
-                clearConsole();
+                clearConsole();	
                 cartMenu(scanner);
                 break;
             default:
@@ -95,7 +97,6 @@ public class Aims {
         store.addMedia(cd1);
         store.addMedia(cd2);
         store.addMedia(cd3);
-  
         
         clearConsole();
     }

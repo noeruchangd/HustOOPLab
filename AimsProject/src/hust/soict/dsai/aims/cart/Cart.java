@@ -3,6 +3,8 @@ import java.util.*;
 
 import hust.soict.dsai.aims.media.DigitalVideoDisc;
 import hust.soict.dsai.aims.media.Media;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class Cart {
 	public static final int MAX_NUMBERS_ORDERED = 20;
@@ -71,6 +73,11 @@ public class Cart {
 		}
 		return null;
 	}
+    
+    public ObservableList<Media> getItemsOrdered() {
+    	ObservableList<Media> observableList = FXCollections.observableList(itemsOrdered);
+    	return observableList;
+	}
 
 	public void searchTitle(String title) {
 		List<Media> results = new ArrayList<Media>();
@@ -112,6 +119,15 @@ public class Cart {
             itemsOrdered.clear();
             System.out.println("Cart emptied!");
             System.out.println();
+        }
+    }
+    
+    public String placeOrder() {
+        if (itemsOrdered.size() == 0) {
+            return "Your cart is empty!";
+        } else {
+            itemsOrdered.clear();
+            return "Order created!\n" + "Now your cart will be empty!";
         }
     }
 
