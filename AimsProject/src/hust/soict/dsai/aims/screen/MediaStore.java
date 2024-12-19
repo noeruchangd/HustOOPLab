@@ -28,7 +28,13 @@ public class MediaStore extends JPanel {
             JButton addToCartButton = new JButton("Add to cart");
             addToCartButton.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
-                    String message = cart.addMedia(media);
+                    String message = null;
+					try {
+						message = cart.addMedia(media);
+					} catch (LimitExceededException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 					JOptionPane.showMessageDialog(null, message);
                     
                 }

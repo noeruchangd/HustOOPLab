@@ -1,5 +1,8 @@
 package hust.soict.dsai.aims.cart;
+import java.io.FileNotFoundException;
 import java.util.*;
+
+import javax.naming.LimitExceededException;
 
 import hust.soict.dsai.aims.media.DigitalVideoDisc;
 import hust.soict.dsai.aims.media.Media;
@@ -13,21 +16,23 @@ public class Cart {
 	public Cart() {
     }
     
-	public String addMedia(Media media) {
+	public String addMedia(Media media) throws LimitExceededException {
 		if (!itemsOrdered.contains(media) && itemsOrdered.size() < MAX_NUMBERS_ORDERED) {
 			itemsOrdered.add(media);
 			return ("Added " + media.getTitle());
 		}
-		else if (!(itemsOrdered.size() < MAX_NUMBERS_ORDERED)) return ("Cart is full!");
-		else return ("Already in cart!");
+		else if (!(itemsOrdered.size() < MAX_NUMBERS_ORDERED)) {
+			throw new LimitExceededException("ERROR: Cart is full!");
+		}
+		return ("Already in cart!");
 	}
 	
-	public void removeMedia (Media media) {
+	public void removeMedia (Media media) throws FileNotFoundException {
 		if (itemsOrdered.contains(media)) {
 			itemsOrdered.remove(media);
 			System.out.println("Removed " + media.getTitle());
 		}
-		else System.out.println("Not in cart!");
+		else throw new FileNotFoundException("Not in cart!");
 	}
 
 
@@ -49,7 +54,7 @@ public class Cart {
 		System.out.println("**************************************************");
 	}
 	
-	public void searchId(int id) {
+	public void searchId(int id) throws FileNotFoundException {
 		List<Media> results = new ArrayList<Media>();
 		for (int i = 0; i < itemsOrdered.size(); i++) {
 			if (itemsOrdered.get(i).getId() == id) {
@@ -62,7 +67,7 @@ public class Cart {
 			System.out.println(results.get(i).toString());
 		}
 		}
-		else System.out.println("No results for discs matching ID " + id + ".");
+		else throw new FileNotFoundException("No results for discs matching ID " + id + ".");
 	
 	}
     public Media searchTitleReturn(String title) {
@@ -79,7 +84,7 @@ public class Cart {
     	return observableList;
 	}
 
-	public void searchTitle(String title) {
+	public void searchTitle(String title) throws FileNotFoundException {
 		List<Media> results = new ArrayList<Media>();
 		for (int i = 0; i < itemsOrdered.size(); i++) {
 			if (itemsOrdered.get(i).getTitle() == title) {
@@ -92,7 +97,7 @@ public class Cart {
 			System.out.println(results.get(i).toString());
 		}
 		}
-		else System.out.println("No results for discs matching title " + title + ".");
+		else throw new FileNotFoundException("No results for discs matching title " + title + ".");
 }
     public void sortMediaByTitle() {
         Collections.sort((List<Media>)itemsOrdered, Media.COMPARE_BY_TITLE_COST);
