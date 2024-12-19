@@ -7,7 +7,7 @@ import javafx.stage.Stage;
 
 public class Painter extends Application {
 	public void start(Stage stage) throws Exception {
-		Parent root = FXMLLoader.load(getClass().getResource("hust/soict/program/javafx/Painter.fxml"));
+		Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("hust/soict/dsai/javafx/Painter.fxml"));
 		
 		Scene scene = new Scene(root);
 		stage.setTitle("Painter");
