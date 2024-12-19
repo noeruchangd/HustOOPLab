@@ -2,6 +2,8 @@ package hust.soict.dsai.aims.media;
 
 import java.util.*;
 
+import hust.soict.dsai.aims.exception.PlayerException;
+
 public abstract class Media {
 	private static int nbMedia = 0;
 	protected int id;
@@ -23,7 +25,7 @@ public abstract class Media {
 		return id;
 	}
 
-    public void play() {
+    public void play() throws PlayerException {
         System.out.println("Playing " + this.getTitle());
     }
     public String playGUI() {

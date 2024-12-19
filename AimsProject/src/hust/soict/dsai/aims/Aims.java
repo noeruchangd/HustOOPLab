@@ -1,8 +1,13 @@
 package hust.soict.dsai.aims;
 
+import java.io.FileNotFoundException;
 import java.util.*;
+
+import javax.naming.LimitExceededException;
+
 import hust.soict.dsai.aims.store.Store;
 import hust.soict.dsai.aims.cart.Cart;
+import hust.soict.dsai.aims.exception.PlayerException;
 import hust.soict.dsai.aims.media.*;
 import hust.soict.dsai.aims.screen.CartScreen;
 import hust.soict.dsai.aims.screen.StoreScreen;
@@ -15,7 +20,7 @@ public class Aims {
     private static Store store = new Store();
     private static Cart cart = new Cart();
     
-	public static void main(String[] args) {
+	public static void main(String[] args) throws PlayerException {
 //		CartTest.main(args);
 //		StoreTest.main(args);
 //		TestPassingParameter.main(args);
@@ -117,7 +122,7 @@ public class Aims {
 		System.out.println("--------------------------------");
 		System.out.println("Please choose a number: 0-1-2-3");
 		}
-	public static void storeMenu(Scanner scanner) {
+	public static void storeMenu(Scanner scanner) throws PlayerException {
         boolean back = false;
         while (!back) {
             store.printStore();
@@ -171,7 +176,12 @@ public class Aims {
                         }
                         Media media = store.searchStore(title);
                         if (media != null) {
-                            cart.addMedia(media);
+                            try {
+								cart.addMedia(media);
+							} catch (LimitExceededException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
                             found1 = true;
                         } else {
                             System.out.println("Not found!");
@@ -211,7 +221,7 @@ public class Aims {
             }
         }
     }
-    public static void mediaDetails(Scanner scanner, Media media) {
+    public static void mediaDetails(Scanner scanner, Media media) throws PlayerException {
         boolean back = false;
         while (!back) {
             System.out.println("Options: ");
@@ -229,7 +239,12 @@ public class Aims {
                     back = true;
                     break;
                 case 1:
-                    cart.addMedia(media);
+				try {
+					cart.addMedia(media);
+				} catch (LimitExceededException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
                     break;
                 case 2:
                     if (media instanceof Disc || media instanceof CompactDisc) {
@@ -245,7 +260,7 @@ public class Aims {
             }
         }
     }
-    public static void cartMenu(Scanner scanner) {
+    public static void cartMenu(Scanner scanner) throws PlayerException {
         boolean back = false;
         while (!back) {
             cart.print();
@@ -280,7 +295,12 @@ public class Aims {
                                 clearConsole();
                                 break;
                             }
-                            cart.searchId(id);
+                            try {
+								cart.searchId(id);
+							} catch (FileNotFoundException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
                             found = true;
                         } else if (filterOption == 2) {
                             System.out.println("Title to filter (type 0 to return): ");
@@ -289,7 +309,12 @@ public class Aims {
                                 clearConsole();
                                 break;
                             }
-                            cart.searchTitle(title);
+                            try {
+								cart.searchTitle(title);
+							} catch (FileNotFoundException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
                             found = true;
                         } else if (filterOption == 0) {
                             clearConsole();
@@ -323,7 +348,12 @@ public class Aims {
                         Media media = cart.searchTitleReturn(title);
                         if (media != null) {
                             clearConsole();
-                            cart.removeMedia(media);
+                            try {
+								cart.removeMedia(media);
+							} catch (FileNotFoundException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
                             found1 = true;
                         } else {
                             System.out.println("Not found!");

@@ -1,5 +1,6 @@
 package hust.soict.dsai.aims.media;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,12 +20,12 @@ public class Book extends Media {
 		return response;
 	}
 	
-	public void removeAuthor(String authorName) {
+	public void removeAuthor(String authorName) throws FileNotFoundException {
 		if (authors.contains(authorName)) {
 			authors.remove(authorName);
 			System.out.println("Removed author: " + authorName);
 		}
-		else System.out.println("Author is not already in author list!");
+		else throw new FileNotFoundException("Author is not already in author list!");
 	}
 
 	public List<String> getAuthors() {

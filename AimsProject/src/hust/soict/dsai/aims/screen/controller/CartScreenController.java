@@ -1,5 +1,7 @@
 package hust.soict.dsai.aims.screen.controller;
 
+import java.io.FileNotFoundException;
+
 import hust.soict.dsai.aims.cart.Cart;
 import hust.soict.dsai.aims.exception.PlayerException;
 import hust.soict.dsai.aims.media.Media;
@@ -75,7 +77,12 @@ public class CartScreenController {
     @FXML
     void btnRemovePressed(ActionEvent event) {
         Media media = tblMedia.getSelectionModel().getSelectedItem();
-        cart.removeMedia(media);
+        try {
+			cart.removeMedia(media);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
         costLabel.setText(cart.totalCost() + " $");
     }
 
